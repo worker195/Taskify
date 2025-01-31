@@ -109,7 +109,7 @@
     <button class="en" type="submit">Submit</button>
     <button class="ar" type="submit" style="display: none;">إرسال</button>
 </form>
-<form action="/servicesSite/pages/jointeam.php" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
  
 
   <fieldset>
@@ -142,11 +142,70 @@
           <label class="en" for="portfolio">Portfolio or Work Samples (optional):</label>
           <label class="ar" for="portfolio" style="display: none;">محفظة الأعمال أو عينات العمل (اختياري):</label>
           <input type="url" id="portfolio" name="portfolio" placeholder="Link to your portfolio or work samples (if any)"><br><br>
+
+
+          <label class="en" for="contact">Contacts :</label>
+          <label class="ar" for="contact" style="display: none;">جهات الاتصال ::</label>
+          <div id="contactOptions">
+            <label for="phone2">
+                <input type="checkbox" name="contact" id="phone2" value="phone"> Phone
+            </label>
+            <input type="text" id="phoneValue" style="display: none;" placeholder="Enter your phone number">
+        
+            <label for="email2">
+                <input type="checkbox" name="contact" id="email2" value="email"> Email
+            </label>
+            <input type="text" id="emailValue" style="display: none;" placeholder="Enter your email">
+        
+            <label for="facebook2">
+                <input type="checkbox" name="contact" id="facebook2" value="facebook"> Facebook
+            </label>
+            <input type="text" id="facebookValue" style="display: none;" placeholder="Enter your Facebook profile">
+        </div>
+        <button class="en" type="submit" id="submitButton">Submit</button>
+        <button class="ar" type="submit" style="display: none;" id="submitButton">إرسال</button>
+        <script>
+          const contactOptions = document.querySelectorAll('input[name="contact"]');
+          const phoneInput = document.getElementById('phoneValue');
+          const emailInput = document.getElementById('emailValue');
+          const facebookInput = document.getElementById('facebookValue');
+          const submitButton = document.getElementById('submitButton');
+      
+          contactOptions.forEach(option => {
+              option.addEventListener('change', () => {
+                  toggleInput(option);
+              });
+          });
+      
+          function toggleInput(option) {
+           
+      
+              if (option.value === 'phone') {
+                  phoneInput.style.display = phoneInput.style.display == 'inline-block'?'none':'inline-block';
+              } else if (option.value === 'email') {
+                emailInput.style.display = emailInput.style.display == 'inline-block'?'none':'inline-block';
+              } else if (option.value === 'facebook') {
+                facebookInput.style.display = facebookInput.style.display == 'inline-block'?'none':'inline-block';
+              }
+          }
+      
+          submitButton.addEventListener('click', () => {
+              if (phoneInput.style.display === 'inline-block' && phoneInput.value !== '') {
+                  
+              } else if (emailInput.style.display === 'inline-block' && emailInput.value !== '') {
+                 
+              } else if (facebookInput.style.display === 'inline-block' && facebookInput.value !== '') {
+                
+              } else {
+                  alert('Please fill out one contact field');
+              }
+          });
+      </script>
+      
       </div>
   </fieldset>
 
-  <button class="en" type="submit">Submit</button>
-  <button class="ar" type="submit" style="display: none;">إرسال</button>
+
 </form>
 
 <script>
